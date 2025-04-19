@@ -1,0 +1,3442 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 X X X D O R R</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #9c27b0;
+            --secondary-color: #e91e63;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --pastel-purple: #d1c4e9;
+            --neon-purple: #b388ff;
+            --pastel-pink: #f8bbd0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar-brand {
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .sidebar-nav {
+            width: 250px;
+        }
+        
+        .sidebar .nav-link {
+            padding: 0.75rem 1.5rem;
+            color: var(--dark-color);
+            border-radius: 0.5rem;
+            margin: 0.25rem 1rem;
+            transition: all 0.3s;
+        }
+        
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            background-color: var(--pastel-purple);
+            color: var(--primary-color);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            flex: 1;
+            transition: all 0.3s;
+        }
+        
+        /* Bottom navbar for mobile */
+        .bottom-navbar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+        
+        .bottom-navbar .nav-item {
+            text-align: center;
+        }
+        
+        .bottom-navbar .nav-link {
+            color: var(--dark-color);
+            font-size: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .bottom-navbar .nav-link i {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .bottom-navbar .product-btn {
+            position: relative;
+            top: -20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white !important;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .bottom-navbar .product-btn i {
+            font-size: 1.5rem;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(156, 39, 176, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(156, 39, 176, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(156, 39, 176, 0);
+            }
+        }
+        
+        /* Profile card with flip animation */
+        .profile-card {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .profile-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        
+        .profile-card.flipped .profile-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .profile-card-front, .profile-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .profile-card-back {
+            background-color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--pastel-purple);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 10px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: var(--primary-color);
+            border: 4px solid var(--pastel-purple);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--pastel-purple);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--pastel-purple);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Product cards */
+        .product-card {
+            transition: all 0.3s;
+            border: none;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        .product-card .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-card .card-body {
+            padding: 1.5rem;
+        }
+        
+        .product-card .price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .product-card .rating {
+            color: #ffc107;
+        }
+        
+        /* Dark mode */
+        body[data-bs-theme="dark"] {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        body[data-bs-theme="dark"] .sidebar,
+        body[data-bs-theme="dark"] .bottom-navbar,
+        body[data-bs-theme="dark"] .card,
+        body[data-bs-theme="dark"] .timeline-content,
+        body[data-bs-theme="dark"] .profile-card-front,
+        body[data-bs-theme="dark"] .profile-card-back {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        body[data-bs-theme="dark"] .sidebar .nav-link {
+            color: #e0e0e0;
+        }
+        
+        body[data-bs-theme="dark"] .sidebar .nav-link:hover,
+        body[data-bs-theme="dark"] .sidebar .nav-link.active {
+            background-color: #4a148c;
+            color: white;
+        }
+        
+        body[data-bs-theme="dark"] .bottom-navbar .nav-link {
+            color: #e0e0e0;
+        }
+        
+        /* Masonry gallery */
+        .masonry {
+            column-count: 3;
+            column-gap: 1em;
+        }
+        
+        .masonry-item {
+            display: inline-block;
+            margin: 0 0 1em;
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .masonry-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .bottom-navbar {
+                display: flex;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid var(--pastel-purple);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 18px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+            
+            .masonry {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+        
+        /* Loading spinner */
+        .loading-spinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 8px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Custom animations */
+        .fade-in {
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .zoom-in {
+            animation: zoomIn 0.5s;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .slide-up {
+            animation: slideUp 0.5s;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7b1fa2;
+        }
+        
+        body[data-bs-theme="dark"] ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+        
+        body[data-bs-theme="dark"] ::-webkit-scrollbar-thumb {
+            background: #7b1fa2;
+        }
+        
+        /* Flip animation for products */
+        .flip-product {
+            transform: rotateY(180deg);
+        }
+        
+        /* Custom button */
+        .btn-purple {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+        
+        .btn-purple:hover {
+            background-color: #7b1fa2;
+            color: white;
+        }
+        
+        /* Custom form controls */
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(156, 39, 176, 0.25);
+        }
+        
+        /* Custom tabs */
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .nav-tabs .nav-link {
+            color: var(--dark-color);
+            border: none;
+            padding: 0.5rem 1rem;
+        }
+        
+        body[data-bs-theme="dark"] .nav-tabs .nav-link {
+            color: #e0e0e0;
+        }
+        
+        body[data-bs-theme="dark"] .nav-tabs .nav-link.active {
+            color: var(--pastel-pink);
+            border-bottom-color: var(--pastel-pink);
+        }
+        
+        /* QR code styling */
+        .qr-container {
+            background: white;
+            padding: 20px;
+            border-radius: 0.5rem;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        body[data-bs-theme="dark"] .qr-container {
+            background: #2d2d2d;
+        }
+        /* Product Card Flip Animation */
+.product-card {
+    perspective: 1000px;
+    height: 100%;
+}
+
+.product-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.product-card:hover .product-card-inner {
+    transform: rotateY(5deg);
+}
+
+.product-card.show-details .product-card-inner {
+    transform: rotateY(180deg);
+}
+
+.product-card-front, .product-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.product-card-back {
+    background-color: white;
+    transform: rotateY(180deg);
+}
+
+/* Cart styles */
+#cart-items img {
+    max-width: 60px;
+}
+
+#cart-items input[type="number"] {
+    text-align: center;
+}
+
+/* Auth styles */
+#authSection .nav-tabs .nav-link {
+    color: var(--dark-color);
+    border: none;
+    padding: 0.75rem 1rem;
+}
+
+#authSection .nav-tabs .nav-link.active {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: bold;
+}
+
+body[data-bs-theme="dark"] #authSection .nav-tabs .nav-link {
+    color: #e0e0e0;
+}
+
+body[data-bs-theme="dark"] #authSection .nav-tabs .nav-link.active {
+    color: var(--pastel-pink);
+    border-bottom-color: var(--pastel-pink);
+}
+
+/* Cart and Orders in header */
+.header-icons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 15px;
+}
+
+.header-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.header-icon:hover {
+    background-color: #7b1fa2;
+}
+
+.header-icon .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+/* Cart and Orders dropdown */
+.cart-dropdown, .orders-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 15px;
+    z-index: 1001;
+    display: none;
+}
+
+body[data-bs-theme="dark"] .cart-dropdown,
+body[data-bs-theme="dark"] .orders-dropdown {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+}
+
+.cart-dropdown.show, .orders-dropdown.show {
+    display: block;
+}
+
+.cart-dropdown h5, .orders-dropdown h5 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+body[data-bs-theme="dark"] .cart-dropdown h5,
+body[data-bs-theme="dark"] .orders-dropdown h5 {
+    border-bottom-color: #333;
+}
+
+.cart-item, .order-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+body[data-bs-theme="dark"] .cart-item,
+body[data-bs-theme="dark"] .order-item {
+    border-bottom-color: #333;
+}
+
+.cart-item img, .order-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-right: 10px;
+}
+
+.cart-item-info, .order-item-info {
+    flex: 1;
+}
+
+.cart-item-title, .order-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-item-price, .order-item-status {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+body[data-bs-theme="dark"] .cart-item-price,
+body[data-bs-theme="dark"] .order-item-status {
+    color: #aaa;
+}
+
+.cart-dropdown-footer, .orders-dropdown-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+body[data-bs-theme="dark"] .cart-dropdown-footer,
+body[data-bs-theme="dark"] .orders-dropdown-footer {
+    border-top-color: #333;
+}
+
+/* Product Detail Modal */
+.product-detail-img {
+    max-height: 400px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.star-rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+}
+
+.review-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+body[data-bs-theme="dark"] .review-item {
+    border-bottom-color: #333;
+}
+
+.review-author {
+    font-weight: bold;
+}
+
+.review-date {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+body[data-bs-theme="dark"] .review-date {
+    color: #aaa;
+}
+
+.verified-buyer {
+    background-color: #e8f5e9;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    color: #2e7d32;
+    margin-left: 5px;
+}
+
+body[data-bs-theme="dark"] .verified-buyer {
+    background-color: #1b5e20;
+    color: #a5d6a7;
+}
+
+/* Checkout page */
+.checkout-product-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* Orders page */
+.order-card {
+    transition: all 0.3s;
+    margin-bottom: 20px;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.order-status {
+    font-weight: bold;
+}
+
+.status-pending {
+    color: #ff9800;
+}
+
+.status-processing {
+    color: #2196f3;
+}
+
+.status-shipped {
+    color: #4caf50;
+}
+
+.status-delivered {
+    color: #8bc34a;
+}
+
+.status-cancelled {
+    color: #f44336;
+}
+    </style>
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Cart and Orders Icons -->
+    <div class="header-icons">
+        <div class="header-icon" id="cartIcon">
+            <i class="bi bi-cart"></i>
+            <span class="badge" id="cartCount">0</span>
+            <div class="cart-dropdown" id="cartDropdown">
+                <h5>Keranjang Belanja</h5>
+                <div id="cartDropdownContent">
+                    <p class="text-center">Keranjang belanja kosong</p>
+                </div>
+                <div class="cart-dropdown-footer">
+                    <a href="#cart" class="btn btn-sm btn-purple w-100">Lihat Keranjang</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-icon" id="ordersIcon">
+            <i class="bi bi-bag"></i>
+            <span class="badge" id="ordersCount">0</span>
+            <div class="orders-dropdown" id="ordersDropdown">
+                <h5>Pesanan Terakhir</h5>
+                <div id="ordersDropdownContent">
+                    <p class="text-center">Belum ada pesanan</p>
+                </div>
+                <div class="orders-dropdown-footer">
+                    <a href="#orders" class="btn btn-sm btn-purple w-100">Lihat Semua Pesanan</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Sidebar -->
+    <div class="sidebar sidebar-nav d-none d-lg-block">
+        <div class="p-4">
+            <a class="navbar-brand" href="#dashboard">3 X X X D O R R</a>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#dashboard">
+                    <i class="bi bi-speedometer2"></i> Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">
+                    <i class="bi bi-person"></i> Tentang
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#products">
+                    <i class="bi bi-bag"></i> Produk
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">
+                    <i class="bi bi-envelope"></i> Kontak
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#account">
+                    <i class="bi bi-person-circle"></i> Akun
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#cart">
+                    <i class="bi bi-cart"></i> Keranjang
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#orders">
+                    <i class="bi bi-bag-check"></i> Pesanan
+                </a>
+            </li>
+        </ul>
+        <div class="position-absolute bottom-0 start-0 p-3 w-100">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                <label class="form-check-label" for="darkModeToggle">Mode Gelap</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Mobile Header -->
+        <header class="d-lg-none d-block mb-4">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#dashboard">3 X X X D O R R</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about">Tentang</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#products">Produk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact">Kontak</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#account">Akun</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#cart">Keranjang</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#orders">Pesanan</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="page-section">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Dashboard</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="profile-card mb-4" onclick="this.classList.toggle('flipped')">
+                        <div class="profile-card-inner">
+                            <div class="profile-card-front card animate__animated animate__zoomIn">
+                                <div class="card-body text-center">
+                                    <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Profile" width="150" height="150">
+                                    <h3>John Doe</h3>
+                                    <p class="text-muted">Web Developer & Designer</p>
+                                    <p class="text-muted"><i class="bi bi-geo-alt"></i> Jakarta, Indonesia</p>
+                                    <div class="d-flex justify-content-center">
+                                        <button class="btn btn-sm btn-purple me-2"><i class="bi bi-envelope"></i> Email</button>
+                                        <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-chat"></i> Message</button>
+                                    </div>
+                                    <div class="mt-3">
+                                        <small class="text-muted">Klik kartu untuk melihat skills</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="profile-card-back card">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center mb-4">Skills</h4>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2 text-primary"><i class="bi bi-code-square"></i></div>
+                                                <div>
+                                                    <h6 class="mb-0">HTML/CSS</h6>
+                                                    <div class="progress mt-1" style="height: 5px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2 text-success"><i class="bi bi-filetype-js"></i></div>
+                                                <div>
+                                                    <h6 class="mb-0">JavaScript</h6>
+                                                    <div class="progress mt-1" style="height: 5px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2 text-info"><i class="bi bi-bootstrap"></i></div>
+                                                <div>
+                                                    <h6 class="mb-0">Bootstrap</h6>
+                                                    <div class="progress mt-1" style="height: 5px;">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2 text-warning"><i class="bi bi-filetype-php"></i></div>
+                                                <div>
+                                                    <h6 class="mb-0">PHP</h6>
+                                                    <div class="progress mt-1" style="height: 5px;">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 75%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2 text-danger"><i class="bi bi-database"></i></div>
+                                                <div>
+                                                    <h6 class="mb-0">MySQL</h6>
+                                                    <div class="progress mt-1" style="height: 5px;">
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 80%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-2 text-secondary"><i class="bi bi-git"></i></div>
+                                                <div>
+                                                    <h6 class="mb-0">Git</h6>
+                                                    <div class="progress mt-1" style="height: 5px;">
+                                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 70%"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-3">
+                                        <small class="text-muted">Klik kartu untuk kembali</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="nav nav-tabs" id="profileTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="media-tab" data-bs-toggle="tab" data-bs-target="#media" type="button" role="tab">Media</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-profile" type="button" role="tab">Tentang</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-3 border border-top-0 rounded-bottom animate__animated animate__fadeIn" id="profileTabContent">
+                        <div class="tab-pane fade show active" id="media" role="tabpanel">
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Sample">
+                                </div>
+                                <div class="col-6">
+                                    <img src="https://via.placeholder.com/300x200" class="img-fluid rounded" alt="Sample">
+                                </div>
+                                <div class="col-12">
+                                    <div class="ratio ratio-16x9 mt-2">
+                                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="about-profile" role="tabpanel">
+                            <h5>Bio</h5>
+                            <p>Seorang web developer dengan pengalaman lebih dari 5 tahun dalam membangun aplikasi web modern dan responsif. Spesialisasi dalam front-end development dengan fokus pada user experience.</p>
+                            
+                            <h5 class="mt-4">Informasi Pribadi</h5>
+                            <ul class="list-unstyled">
+                                <li><strong>Email:</strong> john.doe@example.com</li>
+                                <li><strong>Telepon:</strong> +62 812 3456 7890</li>
+                                <li><strong>Alamat:</strong> Jl. Contoh No. 123, Jakarta</li>
+                                <li><strong>Tanggal Lahir:</strong> 1 Januari 1990</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mb-4 animate__animated animate__fadeIn">Pengalaman Kerja</h4>
+            <div class="timeline">
+                <div class="timeline-item left animate__animated animate__slideInLeft">
+                    <div class="timeline-content">
+                        <h5>2021 - Sekarang</h5>
+                        <h6>Senior Web Developer</h6>
+                        <p>PT. Teknologi Maju</p>
+                        <p>Mengembangkan aplikasi web untuk klien korporat dengan menggunakan teknologi terbaru seperti React, Node.js, dan MongoDB.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right animate__animated animate__slideInRight">
+                    <div class="timeline-content">
+                        <h5>2018 - 2021</h5>
+                        <h6>Web Developer</h6>
+                        <p>PT. Solusi Digital</p>
+                        <p>Membangun dan memelihara website perusahaan serta aplikasi internal dengan PHP dan Laravel.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left animate__animated animate__slideInLeft">
+                    <div class="timeline-content">
+                        <h5>2016 - 2018</h5>
+                        <h6>Junior Web Developer</h6>
+                        <p>PT. Web Kreatif</p>
+                        <p>Membantu dalam pengembangan front-end untuk berbagai proyek klien menggunakan HTML, CSS, dan JavaScript.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right animate__animated animate__slideInRight">
+                    <div class="timeline-content">
+                        <h5>2015 - 2016</h5>
+                        <h6>Magang Web Development</h6>
+                        <p>PT. Inovasi Teknologi</p>
+                        <p>Belajar dasar-dasar pengembangan web dan membantu dalam pembuatan website sederhana.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mt-5 mb-4 animate__animated animate__fadeIn">Portofolio</h4>
+            <div class="row g-3">
+                <div class="col-md-4 animate__animated animate__zoomIn">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Website Perusahaan</h5>
+                            <p class="card-text">Website responsif untuk perusahaan teknologi dengan fitur katalog produk dan sistem kontak.</p>
+                            <a href="#" class="btn btn-sm btn-purple">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Aplikasi E-Commerce</h5>
+                            <p class="card-text">Platform belanja online dengan sistem pembayaran terintegrasi dan manajemen produk.</p>
+                            <a href="#" class="btn btn-sm btn-purple">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Sistem Manajemen Konten</h5>
+                            <p class="card-text">CMS custom untuk mengelola konten website dengan antarmuka yang mudah digunakan.</p>
+                            <a href="#" class="btn btn-sm btn-purple">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="page-section d-none">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Tentang Saya</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title">Tentang Diri Saya</h4>
+                            <p class="card-text">Halo! Saya John Doe, seorang web developer yang bersemangat dalam menciptakan pengalaman digital yang menarik dan fungsional. Saya telah bekerja di industri ini selama lebih dari 5 tahun dan terus belajar teknologi baru untuk meningkatkan keterampilan saya.</p>
+                            <p>Saya tumbuh besar di Jakarta dan sejak kecil selalu tertarik dengan komputer dan teknologi. Hobi saya termasuk coding, fotografi, dan bermain game.</p>
+                            <p>Pendekatan saya dalam pengembangan web berfokus pada kesederhanaan, fungsionalitas, dan estetika. Saya percaya bahwa produk digital yang baik harus mudah digunakan dan menyenangkan secara visual.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Keahlian</h4>
+                            <div class="mb-3">
+                                <h6>Front-end Development</h6>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>UI/UX Design</h6>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Back-end Development</h6>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <h6>Project Management</h6>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mb-4 animate__animated animate__fadeIn">Perjalanan Hidup</h4>
+            <div class="row g-4">
+                <div class="col-md-4 animate__animated animate__zoomIn">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="display-1 text-primary mb-3"><i class="bi bi-mortarboard"></i></div>
+                            <h5>Pendidikan</h5>
+                            <p>Lulus dari Universitas Indonesia dengan gelar Sarjana Ilmu Komputer pada tahun 2015.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__zoomIn animate__delay-1s">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="display-1 text-success mb-3"><i class="bi bi-briefcase"></i></div>
+                            <h5>Karir Awal</h5>
+                            <p>Memulai karir sebagai Junior Web Developer di PT. Web Kreatif pada tahun 2016.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 animate__animated animate__zoomIn animate__delay-2s">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="display-1 text-info mb-3"><i class="bi bi-trophy"></i></div>
+                            <h5>Pencapaian</h5>
+                            <p>Memenangkan penghargaan "Best Web Design" pada kompetisi nasional tahun 2020.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 class="mt-5 mb-4 animate__animated animate__fadeIn">Galeri Pribadi</h4>
+            <div class="masonry">
+                <div class="masonry-item animate__animated animate__fadeIn">
+                    <img src="https://via.placeholder.com/400x300" class="img-fluid rounded" alt="Gallery 1">
+                </div>
+                <div class="masonry-item animate__animated animate__fadeIn">
+                    <img src="https://via.placeholder.com/400x500" class="img-fluid rounded" alt="Gallery 2">
+                </div>
+                <div class="masonry-item animate__animated animate__fadeIn">
+                    <img src="https://via.placeholder.com/400x400" class="img-fluid rounded" alt="Gallery 3">
+                </div>
+                <div class="masonry-item animate__animated animate__fadeIn">
+                    <img src="https://via.placeholder.com/400x600" class="img-fluid rounded" alt="Gallery 4">
+                </div>
+                <div class="masonry-item animate__animated animate__fadeIn">
+                    <img src="https://via.placeholder.com/400x350" class="img-fluid rounded" alt="Gallery 5">
+                </div>
+                <div class="masonry-item animate__animated animate__fadeIn">
+                    <img src="https://via.placeholder.com/400x450" class="img-fluid rounded" alt="Gallery 6">
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="page-section d-none">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Produk Kami</h2>
+            
+            <ul class="nav nav-tabs mb-4" id="productCategoryTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab">Semua</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="electronics-tab" data-bs-toggle="tab" data-bs-target="#electronics" type="button" role="tab">Elektronik</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="clothing-tab" data-bs-toggle="tab" data-bs-target="#clothing" type="button" role="tab">Pakaian</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="food-tab" data-bs-toggle="tab" data-bs-target="#food" type="button" role="tab">Makanan</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content" id="productCategoryTabContent">
+                <div class="tab-pane fade show active" id="all" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 1">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Smartphone X1</h5>
+                                        <span class="price">Rp 5.999.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <small class="text-muted ms-1">(128)</small>
+                                    </div>
+                                    <p class="card-text">Smartphone flagship dengan kamera 108MP dan baterai 5000mAh.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(1)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(1)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 2">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Laptop Pro</h5>
+                                        <span class="price">Rp 12.499.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <small class="text-muted ms-1">(87)</small>
+                                    </div>
+                                    <p class="card-text">Laptop performa tinggi dengan prosesor i7 dan GPU dedicated.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(2)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(2)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Kaos Premium</h5>
+                                        <span class="price">Rp 199.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <small class="text-muted ms-1">(256)</small>
+                                    </div>
+                                    <p class="card-text">Kaos katun premium dengan desain eksklusif dan nyaman dipakai.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(3)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(3)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 4">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Kopi Specialty</h5>
+                                        <span class="price">Rp 125.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <small class="text-muted ms-1">(342)</small>
+                                    </div>
+                                    <p class="card-text">Kopi arabika specialty dari perkebunan di Toraja, Sulawesi.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(4)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(4)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 5">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Smart Watch</h5>
+                                        <span class="price">Rp 1.799.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                        <small class="text-muted ms-1">(54)</small>
+                                    </div>
+                                    <p class="card-text">Smartwatch dengan fitur kesehatan dan notifikasi smartphone.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(5)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(5)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4 animate__animated animate__fadeIn">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 6">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Kue Kering</h5>
+                                        <span class="price">Rp 75.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <small class="text-muted ms-1">(412)</small>
+                                    </div>
+                                    <p class="card-text">Kue kering homemade dengan bahan premium tanpa pengawet.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(6)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(6)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="electronics" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 1">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Smartphone X1</h5>
+                                        <span class="price">Rp 5.999.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <small class="text-muted ms-1">(128)</small>
+                                    </div>
+                                    <p class="card-text">Smartphone flagship dengan kamera 108MP dan baterai 5000mAh.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(1)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(1)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 2">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Laptop Pro</h5>
+                                        <span class="price">Rp 12.499.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <small class="text-muted ms-1">(87)</small>
+                                    </div>
+                                    <p class="card-text">Laptop performa tinggi dengan prosesor i7 dan GPU dedicated.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(2)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(2)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 5">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Smart Watch</h5>
+                                        <span class="price">Rp 1.799.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                        <i class="bi bi-star"></i>
+                                        <small class="text-muted ms-1">(54)</small>
+                                    </div>
+                                    <p class="card-text">Smartwatch dengan fitur kesehatan dan notifikasi smartphone.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(5)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(5)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="clothing" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Kaos Premium</h5>
+                                        <span class="price">Rp 199.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <small class="text-muted ms-1">(256)</small>
+                                    </div>
+                                    <p class="card-text">Kaos katun premium dengan desain eksklusif dan nyaman dipakai.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(3)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(3)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="food" role="tabpanel">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 4">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Kopi Specialty</h5>
+                                        <span class="price">Rp 125.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <small class="text-muted ms-1">(342)</small>
+                                    </div>
+                                    <p class="card-text">Kopi arabika specialty dari perkebunan di Toraja, Sulawesi.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(4)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(4)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="product-card card">
+                                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Product 6">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h5 class="card-title mb-1">Kue Kering</h5>
+                                        <span class="price">Rp 75.000</span>
+                                    </div>
+                                    <div class="rating mb-2">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <small class="text-muted ms-1">(412)</small>
+                                    </div>
+                                    <p class="card-text">Kue kering homemade dengan bahan premium tanpa pengawet.</p>
+                                    <div class="d-flex justify-content-between">
+                                        <button class="btn btn-sm btn-outline-secondary" onclick="showProductDetails(6)">Lihat Detail</button>
+                                        <button class="btn btn-sm btn-purple" onclick="addToCart(6)"><i class="bi bi-cart-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section d-none">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Hubungi Kami</h2>
+            
+            <div class="row">
+                <div class="col-lg-6 mb-4 animate__animated animate__fadeInLeft">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Kirim Pesan</h4>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <label for="contactName" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="contactName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contactEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="contactEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contactMessage" class="form-label">Pesan</label>
+                                    <textarea class="form-control" id="contactMessage" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-purple">Kirim Pesan</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Info Kontak</h4>
+                            <div class="mb-4">
+                                <h5><i class="bi bi-geo-alt-fill me-2 text-primary"></i> Alamat</h5>
+                                <p>Jl. Contoh No. 123, Kelurahan Sample, Kecamatan Demo, Jakarta Selatan, DKI Jakarta 12345</p>
+                                
+                                <div class="ratio ratio-16x9 mb-3">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613507864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e67356080477!2sMonumen%20Nasional!5e0!3m2!1sen!2sid!4v1630418952701!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h5><i class="bi bi-telephone-fill me-2 text-success"></i> Telepon</h5>
+                                <p>+62 812 3456 7890</p>
+                            </div>
+                            <div class="mb-4">
+                                <h5><i class="bi bi-envelope-fill me-2 text-danger"></i> Email</h5>
+                                <p>info@example.com</p>
+                            </div>
+                            <div>
+                                <h5><i class="bi bi-people-fill me-2 text-info"></i> Sosial Media</h5>
+                                <div class="d-flex gap-3">
+                                    <a href="#" class="text-decoration-none fs-3 text-primary"><i class="bi bi-facebook"></i></a>
+                                    <a href="#" class="text-decoration-none fs-3 text-info"><i class="bi bi-twitter"></i></a>
+                                    <a href="#" class="text-decoration-none fs-3 text-danger"><i class="bi bi-instagram"></i></a>
+                                    <a href="#" class="text-decoration-none fs-3 text-success"><i class="bi bi-whatsapp"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 animate__animated animate__fadeIn">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Hubungi via WhatsApp</h5>
+                            <p>Scan QR code berikut untuk langsung terhubung dengan kami di WhatsApp</p>
+                            <div class="qr-container mb-3">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/6282164924290" alt="WhatsApp QR Code">
+                            </div>
+                            <a href="https://wa.me/6282164924290" class="btn btn-success"><i class="bi bi-whatsapp"></i> Hubungi Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 animate__animated animate__fadeIn">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jam Operasional</h5>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Senin - Jumat</td>
+                                        <td>09:00 - 17:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sabtu</td>
+                                        <td>09:00 - 15:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Minggu</td>
+                                        <td>Tutup</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-muted">*Kecuali hari libur nasional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Account Section -->
+        <section id="account" class="page-section d-none">
+            <!-- Account Section when logged in -->
+            <div id="accountSection" class="d-none">
+                <h2 class="mb-4 animate__animated animate__fadeIn">Akun Saya</h2>
+                
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Profile" width="150" height="150">
+                                <h4 id="accountName">John Doe</h4>
+                                <p class="text-muted" id="accountEmail">john.doe@example.com</p>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#changePhotoModal">Ganti Foto</button>
+                                    <button class="btn btn-outline-danger" onclick="logout()">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Statistik Akun</h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Pesanan
+                                        <span class="badge bg-primary rounded-pill">12</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Favorit
+                                        <span class="badge bg-success rounded-pill">5</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Poin Hadiah
+                                        <span class="badge bg-warning rounded-pill">1,250</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="accountTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">Profil</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab">Pengaturan</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab">Keamanan</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content p-3" id="accountTabContent">
+                                    <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                                        <form id="profileForm">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="firstName" class="form-label">Nama Depan</label>
+                                                    <input type="text" class="form-control" id="firstName" value="John">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="lastName" class="form-label">Nama Belakang</label>
+                                                    <input type="text" class="form-control" id="lastName" value="Doe">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" value="john.doe@example.com" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="phone" class="form-label">Nomor Telepon</label>
+                                                <input type="tel" class="form-control" id="phone" value="+6281234567890">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="birthDate" class="form-label">Tanggal Lahir</label>
+                                                <input type="date" class="form-control" id="birthDate" value="1990-01-01">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="address" class="form-label">Alamat</label>
+                                                <textarea class="form-control" id="address" rows="3">Jl. Contoh No. 123, Jakarta</textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-purple">Simpan Perubahan</button>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="settings" role="tabpanel">
+                                        <div class="mb-4">
+                                            <h5>Preferensi</h5>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="darkModeSwitch" checked>
+                                                <label class="form-check-label" for="darkModeSwitch">Mode Gelap</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="notificationSwitch" checked>
+                                                <label class="form-check-label" for="notificationSwitch">Notifikasi Email</label>
+                                            </div>
+                                            <div class="form-check form-switch mb-3">
+                                                <input class="form-check-input" type="checkbox" id="newsletterSwitch">
+                                                <label class="form-check-label" for="newsletterSwitch">Newsletter</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <h5>Bahasa</h5>
+                                            <select class="form-select">
+                                                <option selected>Bahasa Indonesia</option>
+                                                <option>English</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn btn-purple">Simpan Pengaturan</button>
+                                    </div>
+                                    <div class="tab-pane fade" id="security" role="tabpanel">
+                                        <div class="mb-4">
+                                            <h5>Ganti Password</h5>
+                                            <form id="passwordForm">
+                                                <div class="mb-3">
+                                                    <label for="currentPassword" class="form-label">Password Saat Ini</label>
+                                                    <input type="password" class="form-control" id="currentPassword" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="newPassword" class="form-label">Password Baru</label>
+                                                    <input type="password" class="form-control" id="newPassword" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="confirmPassword" class="form-label">Konfirmasi Password Baru</label>
+                                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-purple">Ganti Password</button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <h5>Sesi Aktif</h5>
+                                            <div class="list-group">
+                                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h6 class="mb-1">Chrome - Windows</h6>
+                                                        <small class="text-muted">Jakarta, Indonesia · Sekarang</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-outline-danger">Keluar</button>
+                                                </div>
+                                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h6 class="mb-1">Safari - iPhone</h6>
+                                                        <small class="text-muted">Bandung, Indonesia · 2 hari lalu</small>
+                                                    </div>
+                                                    <button class="btn btn-sm btn-outline-danger">Keluar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Auth Section when not logged in -->
+            <div id="authSection">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs" id="authTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content p-3" id="authTabContent">
+                                    <div class="tab-pane fade show active" id="login" role="tabpanel">
+                                        <form id="loginForm">
+                                            <div class="mb-3">
+                                                <label for="loginEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="loginEmail" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="loginPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="loginPassword" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-purple w-100 mb-3">Login</button>
+                                            <div class="text-center mb-3">
+                                                <p class="mb-0">Atau login dengan</p>
+                                            </div>
+                                            <button type="button" id="googleLoginBtn" class="btn btn-outline-secondary w-100">
+                                                <i class="bi bi-google"></i> Google
+                                            </button>
+                                            <div class="text-center mt-3">
+                                                <p class="mb-0">Belum punya akun? <a href="#" onclick="switchAuthTab('register')">Daftar disini</a></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="register" role="tabpanel">
+                                        <form id="registerForm">
+                                            <div class="mb-3">
+                                                <label for="registerName" class="form-label">Nama Lengkap</label>
+                                                <input type="text" class="form-control" id="registerName" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="registerEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="registerEmail" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="registerPassword" class="form-label">Password</label>
+                                                <input type="password" class="form-control" id="registerPassword" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="registerConfirmPassword" class="form-label">Konfirmasi Password</label>
+                                                <input type="password" class="form-control" id="registerConfirmPassword" required>
+                                            </div>
+                                            <button type="submit" class="btn btn-purple w-100 mb-3">Daftar</button>
+                                            <div class="text-center">
+                                                <p class="mb-0">Sudah punya akun? <a href="#" onclick="switchAuthTab('login')">Login disini</a></p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Change Photo Modal -->
+            <div class="modal fade" id="changePhotoModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Ganti Foto Profil</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="photoForm">
+                                <div class="mb-3">
+                                    <label for="photoUpload" class="form-label">Pilih foto baru</label>
+                                    <input class="form-control" type="file" id="photoUpload" accept="image/*">
+                                </div>
+                                <div class="text-center mb-3">
+                                    <img id="photoPreview" src="https://via.placeholder.com/200" class="img-thumbnail" style="max-width: 200px;">
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-purple">Simpan Foto</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Section -->
+        <section id="cart" class="page-section d-none">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Keranjang Belanja</h2>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Daftar Produk</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produk</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Subtotal</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cartItems">
+                                        <tr>
+                                            <td colspan="5" class="text-center py-5">Keranjang belanja kosong</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Ringkasan Belanja</h5>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal</span>
+                                <span id="cartSubtotal">Rp 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>Ongkos Kirim</span>
+                                <span>Rp 15.000</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-3">
+                                <h6>Total</h6>
+                                <h6 id="cartTotal">Rp 15.000</h6>
+                            </div>
+                            <button class="btn btn-purple w-100" onclick="checkout()">Lanjut ke Pembayaran</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="orders" class="page-section d-none">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Pesanan Saya</h2>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Daftar Pesanan</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID Pesanan</th>
+                                    <th>Tanggal</th>
+                                    <th>Produk</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersList">
+                                <tr>
+                                    <td colspan="6" class="text-center py-5">Belum ada pesanan</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Section -->
+        <section id="checkout" class="page-section d-none">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Checkout</h2>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Informasi Pengiriman</h5>
+                            <form id="shippingForm">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="fullName" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="fullName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phoneNumber" class="form-label">Nomor Telepon</label>
+                                        <input type="tel" class="form-control" id="phoneNumber" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Alamat Lengkap</label>
+                                    <textarea class="form-control" id="address" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="province" class="form-label">Provinsi</label>
+                                    <select class="form-select" id="province" required>
+                                        <option value="">Pilih Provinsi</option>
+                                        <option value="jakarta">DKI Jakarta</option>
+                                        <option value="jabar">Jawa Barat</option>
+                                        <option value="jateng">Jawa Tengah</option>
+                                        <option value="jatim">Jawa Timur</option>
+                                    </select>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="city" class="form-label">Kota/Kabupaten</label>
+                                        <select class="form-select" id="city" required>
+                                            <option value="">Pilih Kota/Kabupaten</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="postalCode" class="form-label">Kode Pos</label>
+                                        <input type="text" class="form-control" id="postalCode" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="shippingMethod" class="form-label">Metode Pengiriman</label>
+                                    <select class="form-select" id="shippingMethod" required>
+                                        <option value="">Pilih Metode Pengiriman</option>
+                                        <option value="jne">JNE Reguler</option>
+                                        <option value="tiki">TIKI</option>
+                                        <option value="pos">POS Indonesia</option>
+                                        <option value="jnt">J&T Express</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Produk yang Dipesan</h5>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Produk</th>
+                                            <th>Harga</th>
+                                            <th>Jumlah</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="checkoutProducts">
+                                        <tr>
+                                            <td colspan="4" class="text-center py-5">Tidak ada produk</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Ringkasan Pembayaran</h5>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal</span>
+                                <span id="checkoutSubtotal">Rp 0</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Ongkos Kirim</span>
+                                <span id="checkoutShipping">Rp 0</span>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between mb-3">
+                                <h6>Total</h6>
+                                <h6 id="checkoutTotal">Rp 0</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Metode Pembayaran</h5>
+                            <ul class="nav nav-tabs" id="paymentMethodTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="bank-tab" data-bs-toggle="tab" data-bs-target="#bank" type="button" role="tab">Transfer Bank</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="ewallet-tab" data-bs-toggle="tab" data-bs-target="#ewallet" type="button" role="tab">Dompet Digital</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content p-3 border border-top-0" id="paymentMethodTabContent">
+                                <div class="tab-pane fade show active" id="bank" role="tabpanel">
+                                    <div class="mb-3">
+                                        <label for="bankSelect" class="form-label">Pilih Bank</label>
+                                        <select class="form-select" id="bankSelect">
+                                            <option value="bca">BCA</option>
+                                            <option value="bni">BNI</option>
+                                            <option value="bri">BRI</option>
+                                            <option value="mandiri">Mandiri</option>
+                                            <option value="seabank">SeaBank</option>
+                                        </select>
+                                    </div>
+                                    <div class="alert alert-info">
+                                        <h6>Rekening Tujuan</h6>
+                                        <p id="bankAccountInfo">Nama: John Doe<br>Nomor Rekening: 1234567890</p>
+                                        <p class="mb-0">Harap transfer sesuai nominal pesanan. Pesanan akan diproses setelah pembayaran diterima.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="ewallet" role="tabpanel">
+                                    <div class="mb-3">
+                                        <label for="ewalletSelect" class="form-label">Pilih Dompet Digital</label>
+                                        <select class="form-select" id="ewalletSelect">
+                                            <option value="dana">DANA</option>
+                                            <option value="ovo">OVO</option>
+                                            <option value="gopay">GoPay</option>
+                                            <option value="shopeepay">ShopeePay</option>
+                                            <option value="linkaja">LinkAja</option>
+                                        </select>
+                                    </div>
+                                    <div class="alert alert-info">
+                                        <h6>Nomor Tujuan</h6>
+                                        <p>082164924290</p>
+                                        <p class="mb-0">Harap transfer sesuai nominal pesanan. Pesanan akan diproses setelah pembayaran diterima.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-purple w-100 mt-3" onclick="placeOrder()">Buat Pesanan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Mobile Bottom Navbar -->
+    <nav class="bottom-navbar d-lg-none">
+        <ul class="nav justify-content-around w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="#dashboard">
+                    <i class="bi bi-speedometer2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">
+                    <i class="bi bi-person"></i>
+                    <span>Tentang</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link product-btn" href="#products">
+                    <i class="bi bi-bag"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">
+                    <i class="bi bi-envelope"></i>
+                    <span>Kontak</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#account">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Akun</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Product Detail Modal -->
+    <div class="modal fade" id="productDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle">Detail Produk</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://via.placeholder.com/500" class="img-fluid product-detail-img mb-3" id="productModalImage" alt="Product Image">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 id="productModalName">Nama Produk</h3>
+                            <div class="star-rating mb-2">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                                <small class="text-muted ms-1">(128 ulasan)</small>
+                            </div>
+                            <h4 class="text-primary mb-3" id="productModalPrice">Rp 0</h4>
+                            
+                            <ul class="nav nav-tabs mb-3" id="productDetailTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab">Deskripsi</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab">Spesifikasi</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab">Ulasan</button>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content" id="productDetailTabContent">
+                                <div class="tab-pane fade show active" id="description" role="tabpanel">
+                                    <p id="productModalDescription">Deskripsi produk akan ditampilkan di sini.</p>
+                                </div>
+                                <div class="tab-pane fade" id="specs" role="tabpanel">
+                                    <ul id="productModalSpecs">
+                                        <li>Spesifikasi produk akan ditampilkan di sini</li>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                    <div class="review-item">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <div>
+                                                <span class="review-author">John Doe</span>
+                                                <span class="verified-buyer">Pembeli Terverifikasi</span>
+                                            </div>
+                                            <span class="review-date">12 Januari 2023</span>
+                                        </div>
+                                        <div class="star-rating mb-2">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <p>Produk sangat bagus, sesuai dengan deskripsi. Pengiriman cepat dan packing rapi.</p>
+                                    </div>
+                                    
+                                    <div class="review-item">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <div>
+                                                <span class="review-author">Jane Smith</span>
+                                            </div>
+                                            <span class="review-date">5 Desember 2022</span>
+                                        </div>
+                                        <div class="star-rating mb-2">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star"></i>
+                                        </div>
+                                        <p>Produknya bagus, tapi pengiriman agak lama. Mungkin karena musim liburan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex gap-2 mt-4">
+                                <button class="btn btn-outline-secondary flex-grow-1" onclick="addToCartFromModal()">
+                                    <i class="bi bi-cart-plus"></i> Tambah ke Keranjang
+                                </button>
+                                <button class="btn btn-purple flex-grow-1" onclick="buyNow()">
+                                    <i class="bi bi-bag"></i> Beli Sekarang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Success Modal -->
+    <div class="modal fade" id="orderSuccessModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="display-1 text-success mb-4">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <h3 class="mb-3">Pesanan Berhasil!</h3>
+                    <p class="mb-4">Terima kasih telah berbelanja di toko kami. Pesanan Anda akan segera kami proses.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <a href="#orders" class="btn btn-purple" data-bs-dismiss="modal">Lihat Pesanan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="successToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Sukses</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Operasi berhasil dilakukan.
+            </div>
+        </div>
+        
+        <div id="errorToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-danger text-white">
+                <strong class="me-auto">Error</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Terjadi kesalahan. Silakan coba lagi.
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-storage-compat.js"></script>
+    
+    <script>
+        // Hapus loading spinner setelah halaman selesai dimuat
+window.addEventListener('load', function() {
+    const loadingSpinner = document.querySelector('.loading-spinner');
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'none';
+    }
+});
+        // Product data
+        const products = {
+            1: {
+                id: 1,
+                name: "Smartphone X1",
+                price: 5999000,
+                image: "https://via.placeholder.com/500",
+                description: "Smartphone flagship dengan kamera 108MP, chipset terbaru, dan baterai 5000mAh yang tahan lama. Layar AMOLED 6.7 inci dengan refresh rate 120Hz.",
+                specs: [
+                    "Layar: 6.7 inci AMOLED 120Hz",
+                    "Prosesor: Snapdragon 8 Gen 2",
+                    "RAM: 12GB",
+                    "Penyimpanan: 256GB",
+                    "Kamera: 108MP + 12MP + 8MP",
+                    "Baterai: 5000mAh"
+                ],
+                rating: 4.5,
+                reviews: 128,
+                reviewsList: [
+                    {
+                        author: "John Doe",
+                        verified: true,
+                        date: "12 Januari 2023",
+                        rating: 5,
+                        comment: "Produk sangat bagus, sesuai dengan deskripsi. Pengiriman cepat dan packing rapi."
+                    },
+                    {
+                        author: "Jane Smith",
+                        verified: false,
+                        date: "5 Desember 2022",
+                        rating: 4,
+                        comment: "Produknya bagus, tapi pengiriman agak lama. Mungkin karena musim liburan."
+                    }
+                ]
+            },
+            2: {
+                id: 2,
+                name: "Laptop Pro",
+                price: 12499000,
+                image: "https://via.placeholder.com/500",
+                description: "Laptop profesional dengan prosesor Intel Core i7 generasi terbaru, GPU NVIDIA RTX 3050, RAM 16GB DDR5, dan SSD 512GB. Layar 15.6\" IPS 144Hz.",
+                specs: [
+                    "Prosesor: Intel Core i7-12700H",
+                    "GPU: NVIDIA RTX 3050 4GB",
+                    "RAM: 16GB DDR5",
+                    "Penyimpanan: 512GB NVMe SSD",
+                    "Layar: 15.6\" IPS 144Hz",
+                    "Sistem Operasi: Windows 11 Pro"
+                ],
+                rating: 4,
+                reviews: 87,
+                reviewsList: [
+                    {
+                        author: "Michael Johnson",
+                        verified: true,
+                        date: "20 Februari 2023",
+                        rating: 5,
+                        comment: "Performanya sangat cepat, cocok untuk kerja dan gaming. Layarnya juga bagus."
+                    },
+                    {
+                        author: "Sarah Williams",
+                        verified: true,
+                        date: "3 Januari 2023",
+                        rating: 4,
+                        comment: "Laptopnya keren, tapi agak berat untuk dibawa-bawa."
+                    }
+                ]
+            },
+            3: {
+                id: 3,
+                name: "Kaos Premium",
+                price: 199000,
+                image: "https://via.placeholder.com/500",
+                description: "Kaos katun premium dengan desain eksklusif dan nyaman dipakai. Bahan katun combed 30s yang lembut dan menyerap keringat.",
+                specs: [
+                    "Bahan: Katun Combed 30s",
+                    "Ukuran: S, M, L, XL",
+                    "Warna: Hitam, Putih, Navy",
+                    "Berat: 180 gram",
+                    "Made in Indonesia"
+                ],
+                rating: 5,
+                reviews: 256,
+                reviewsList: [
+                    {
+                        author: "David Brown",
+                        verified: true,
+                        date: "15 Maret 2023",
+                        rating: 5,
+                        comment: "Bahan sangat nyaman dipakai, tidak panas dan tidak mudah melar."
+                    },
+                    {
+                        author: "Lisa Taylor",
+                        verified: false,
+                        date: "28 Februari 2023",
+                        rating: 5,
+                        comment: "Desainnya simple tapi elegan, harga juga worth it untuk kualitasnya."
+                    }
+                ]
+            },
+            4: {
+                id: 4,
+                name: "Kopi Specialty",
+                price: 125000,
+                image: "https://via.placeholder.com/500",
+                description: "Kopi arabika specialty dari perkebunan di Toraja, Sulawesi. Dengan rasa yang kompleks dan aroma yang khas, cocok untuk pecinta kopi sejati.",
+                specs: [
+                    "Asal: Toraja, Sulawesi",
+                    "Varietas: Arabika",
+                    "Proses: Full Wash",
+                    "Roast Level: Medium",
+                    "Berat: 250 gram",
+                    "Kemasan: Vacuum Sealed"
+                ],
+                rating: 4.5,
+                reviews: 342,
+                reviewsList: [
+                    {
+                        author: "Robert Wilson",
+                        verified: true,
+                        date: "10 Maret 2023",
+                        rating: 5,
+                        comment: "Aromanya harum sekali, rasa juga tidak terlalu pahit. Sudah beli berkali-kali."
+                    },
+                    {
+                        author: "Emily Anderson",
+                        verified: false,
+                        date: "22 Januari 2023",
+                        rating: 4,
+                        comment: "Kopinya enak, tapi harganya agak mahal dibandingkan merk lain."
+                    }
+                ]
+            },
+            5: {
+                id: 5,
+                name: "Smart Watch",
+                price: 1799000,
+                image: "https://via.placeholder.com/500",
+                description: "Smartwatch dengan fitur kesehatan dan notifikasi smartphone. Dilengkapi dengan monitor detak jantung, SPO2, dan berbagai mode olahraga.",
+                specs: [
+                    "Layar: AMOLED 1.4 inci",
+                    "Baterai: 300mAh (7 hari)",
+                    "Konektivitas: Bluetooth 5.0",
+                    "Sensor: Detak Jantung, SPO2, Akselerometer",
+                    "Tahan Air: IP68",
+                    "Kompatibilitas: Android & iOS"
+                ],
+                rating: 3.5,
+                reviews: 54,
+                reviewsList: [
+                    {
+                        author: "James Martinez",
+                        verified: true,
+                        date: "5 Maret 2023",
+                        rating: 4,
+                        comment: "Fitur lengkap untuk harganya, baterai tahan lama seperti di deskripsi."
+                    },
+                    {
+                        author: "Jennifer Garcia",
+                        verified: false,
+                        date: "18 Februari 2023",
+                        rating: 3,
+                        comment: "Kadang notifikasi dari HP tidak masuk, harus restart dulu."
+                    }
+                ]
+            },
+            6: {
+                id: 6,
+                name: "Kue Kering",
+                price: 75000,
+                image: "https://via.placeholder.com/500",
+                description: "Kue kering homemade dengan bahan premium tanpa pengawet. Tersedia dalam berbagai varian rasa seperti coklat, keju, dan kacang.",
+                specs: [
+                    "Varian Rasa: Coklat, Keju, Kacang",
+                    "Berat: 500 gram",
+                    "Kemasan: Toples Plastik",
+                    "Kadaluarsa: 2 minggu",
+                    "Tanpa Pengawet",
+                    "Homemade"
+                ],
+                rating: 5,
+                reviews: 412,
+                reviewsList: [
+                    {
+                        author: "Daniel Rodriguez",
+                        verified: true,
+                        date: "8 Maret 2023",
+                        rating: 5,
+                        comment: "Rasanya enak banget, tidak terlalu manis dan teksturnya pas."
+                    },
+                    {
+                        author: "Michelle Lee",
+                        verified: true,
+                        date: "25 Februari 2023",
+                        rating: 5,
+                        comment: "Anak-anak suka sekali, pesan lagi untuk acara arisan."
+                    }
+                ]
+            }
+        };
+
+        // Cart and orders data
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let orders = JSON.parse(localStorage.getItem('orders')) || [];
+        
+        // DOM elements
+        const cartCount = document.getElementById('cartCount');
+        const ordersCount = document.getElementById('ordersCount');
+        const cartIcon = document.getElementById('cartIcon');
+        const ordersIcon = document.getElementById('ordersIcon');
+        const cartDropdown = document.getElementById('cartDropdown');
+        const ordersDropdown = document.getElementById('ordersDropdown');
+        const cartDropdownContent = document.getElementById('cartDropdownContent');
+        const ordersDropdownContent = document.getElementById('ordersDropdownContent');
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartCount();
+            updateOrdersCount();
+            loadCartDropdown();
+            loadOrdersDropdown();
+            
+            // Event listeners for dropdown toggles
+            cartIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                cartDropdown.classList.toggle('show');
+                ordersDropdown.classList.remove('show');
+            });
+            
+            ordersIcon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                ordersDropdown.classList.toggle('show');
+                cartDropdown.classList.remove('show');
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function() {
+                cartDropdown.classList.remove('show');
+                ordersDropdown.classList.remove('show');
+            });
+            
+            // Navigation handling
+            const navLinks = document.querySelectorAll('.nav-link:not([data-bs-toggle])');
+            const pageSections = document.querySelectorAll('.page-section');
+            
+            function showSection(sectionId) {
+                pageSections.forEach(section => {
+                    section.classList.add('d-none');
+                    if (section.id === sectionId) {
+                        section.classList.remove('d-none');
+                        
+                        // Add animations to elements in the section
+                        const elements = section.querySelectorAll('.animate__animated');
+                        elements.forEach((el, index) => {
+                            setTimeout(() => {
+                                el.classList.add(el.classList[1]); // Add the animation class
+                            }, index * 100);
+                        });
+                        
+                        // Load specific content for sections
+                        if (sectionId === 'cart') {
+                            loadCartPage();
+                        } else if (sectionId === 'orders') {
+                            loadOrdersPage();
+                        } else if (sectionId === 'checkout') {
+                            loadCheckoutPage();
+                        }
+                    }
+                });
+                
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('href').substring(1);
+                    showSection(sectionId);
+                });
+            });
+            
+            // Show dashboard by default or based on hash
+            const hash = window.location.hash.substring(1);
+            if (hash && ['dashboard', 'about', 'products', 'contact', 'account', 'cart', 'orders', 'checkout'].includes(hash)) {
+                showSection(hash);
+            } else {
+                showSection('dashboard');
+            }
+            
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const darkModeSwitch = document.getElementById('darkModeSwitch');
+            
+            darkModeToggle.addEventListener('change', function() {
+                document.body.setAttribute('data-bs-theme', this.checked ? 'dark' : 'light');
+                if (darkModeSwitch) darkModeSwitch.checked = this.checked;
+                localStorage.setItem('darkMode', this.checked ? 'enabled' : 'disabled');
+            });
+            
+            if (darkModeSwitch) {
+                darkModeSwitch.addEventListener('change', function() {
+                    document.body.setAttribute('data-bs-theme', this.checked ? 'dark' : 'light');
+                    darkModeToggle.checked = this.checked;
+                    localStorage.setItem('darkMode', this.checked ? 'enabled' : 'disabled');
+                });
+            }
+            
+            // Check for saved dark mode preference
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.setAttribute('data-bs-theme', 'dark');
+                darkModeToggle.checked = true;
+                if (darkModeSwitch) darkModeSwitch.checked = true;
+            }
+        });
+        
+        // Cart functions
+        function addToCart(productId) {
+            const product = products[productId];
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            loadCartDropdown();
+            showToast('success', `${product.name} ditambahkan ke keranjang`);
+        }
+        
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            loadCartDropdown();
+            loadCartPage();
+            showToast('success', 'Produk dihapus dari keranjang');
+        }
+        
+        function updateQuantity(productId, newQuantity) {
+            const item = cart.find(item => item.id === productId);
+            if (item && newQuantity > 0) {
+                item.quantity = parseInt(newQuantity);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCartDropdown();
+                loadCartPage();
+                updateCartCount();
+            }
+        }
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = count;
+        }
+        
+        function loadCartDropdown() {
+            if (cart.length === 0) {
+                cartDropdownContent.innerHTML = '<p class="text-center">Keranjang belanja kosong</p>';
+                return;
+            }
+            
+            let html = '';
+            cart.forEach(item => {
+                html += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">${formatCurrency(item.price)} x ${item.quantity}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartDropdownContent.innerHTML = html;
+        }
+        
+        function loadCartPage() {
+            const cartItemsElement = document.getElementById('cartItems');
+            const cartSubtotalElement = document.getElementById('cartSubtotal');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="text-center py-5">Keranjang belanja kosong</td>
+                    </tr>
+                `;
+                cartSubtotalElement.textContent = formatCurrency(0);
+                cartTotalElement.textContent = formatCurrency(15000);
+                return;
+            }
+            
+            let subtotal = 0;
+            let html = '';
+            
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                html += `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" alt="${item.name}" width="60" class="rounded me-3">
+                                <div>
+                                    <h6 class="mb-0">${item.name}</h6>
+                                    <small class="text-muted">${formatCurrency(item.price)}</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td>${formatCurrency(item.price)}</td>
+                        <td>
+                            <input type="number" class="form-control form-control-sm" value="${item.quantity}" min="1" style="width: 60px;" onchange="updateQuantity(${item.id}, this.value)">
+                        </td>
+                        <td>${formatCurrency(item.price * item.quantity)}</td>
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${item.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            const shipping = 15000;
+            const total = subtotal + shipping;
+            
+            cartItemsElement.innerHTML = html;
+            cartSubtotalElement.textContent = formatCurrency(subtotal);
+            cartTotalElement.textContent = formatCurrency(total);
+        }
+        
+        // Orders functions
+        function updateOrdersCount() {
+            ordersCount.textContent = orders.length;
+        }
+        
+        function loadOrdersDropdown() {
+            if (orders.length === 0) {
+                ordersDropdownContent.innerHTML = '<p class="text-center">Belum ada pesanan</p>';
+                return;
+            }
+            
+            // Show only the 3 most recent orders
+            const recentOrders = orders.slice(0, 3);
+            let html = '';
+            
+            recentOrders.forEach(order => {
+                html += `
+                    <div class="order-item">
+                        <img src="${order.items[0].image}" alt="${order.items[0].name}">
+                        <div class="order-item-info">
+                            <div class="order-item-title">${order.items[0].name}${order.items.length > 1 ? ` + ${order.items.length - 1} lainnya` : ''}</div>
+                            <div class="order-item-status">${getOrderStatusBadge(order.status)}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            ordersDropdownContent.innerHTML = html;
+        }
+        
+        function loadOrdersPage() {
+            const ordersList = document.getElementById('ordersList');
+            
+            if (orders.length === 0) {
+                ordersList.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="text-center py-5">Belum ada pesanan</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            orders.forEach(order => {
+                html += `
+                    <tr>
+                        <td>#${order.id}</td>
+                        <td>${formatDate(order.date)}</td>
+                        <td>
+                            ${order.items[0].name} (${order.items[0].quantity}x)
+                            ${order.items.length > 1 ? `<br><small>+ ${order.items.length - 1} produk lainnya</small>` : ''}
+                        </td>
+                        <td>${formatCurrency(order.total)}</td>
+                        <td>${getOrderStatusBadge(order.status)}</td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('${order.id}')">
+                                <i class="bi bi-eye"></i> Detail
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            ordersList.innerHTML = html;
+        }
+        
+        function getOrderStatusBadge(status) {
+            const statusMap = {
+                'pending': { class: 'status-pending', text: 'Menunggu Pembayaran' },
+                'processing': { class: 'status-processing', text: 'Diproses' },
+                'shipped': { class: 'status-shipped', text: 'Dikirim' },
+                'delivered': { class: 'status-delivered', text: 'Selesai' },
+                'cancelled': { class: 'status-cancelled', text: 'Dibatalkan' }
+            };
+            
+            return `<span class="order-status ${statusMap[status].class}">${statusMap[status].text}</span>`;
+        }
+        
+        // Product detail functions
+        function showProductDetails(productId) {
+            const product = products[productId];
+            if (!product) return;
+            
+            document.getElementById('productModalTitle').textContent = product.name;
+            document.getElementById('productModalName').textContent = product.name;
+            document.getElementById('productModalImage').src = product.image;
+            document.getElementById('productModalPrice').textContent = formatCurrency(product.price);
+            document.getElementById('productModalDescription').textContent = product.description;
+            
+            // Update specs
+            const specsList = document.getElementById('productModalSpecs');
+            specsList.innerHTML = '';
+            product.specs.forEach(spec => {
+                specsList.innerHTML += `<li>${spec}</li>`;
+            });
+            
+            // Update rating stars
+            const starRating = document.querySelector('#productDetailModal .star-rating');
+            starRating.innerHTML = '';
+            const fullStars = Math.floor(product.rating);
+            const hasHalfStar = product.rating % 1 >= 0.5;
+            
+            for (let i = 1; i <= 5; i++) {
+                if (i <= fullStars) {
+                    starRating.innerHTML += '<i class="bi bi-star-fill"></i>';
+                } else if (i === fullStars + 1 && hasHalfStar) {
+                    starRating.innerHTML += '<i class="bi bi-star-half"></i>';
+                } else {
+                    starRating.innerHTML += '<i class="bi bi-star"></i>';
+                }
+            }
+            
+            starRating.innerHTML += `<small class="text-muted ms-1">(${product.reviews} ulasan)</small>`;
+            
+            // Update reviews
+            const reviewsTab = document.querySelector('#reviews .tab-pane');
+            reviewsTab.innerHTML = '';
+            
+            product.reviewsList.forEach(review => {
+                reviewsTab.innerHTML += `
+                    <div class="review-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <div>
+                                <span class="review-author">${review.author}</span>
+                                ${review.verified ? '<span class="verified-buyer">Pembeli Terverifikasi</span>' : ''}
+                            </div>
+                            <span class="review-date">${review.date}</span>
+                        </div>
+                        <div class="star-rating mb-2">
+                            ${'<i class="bi bi-star-fill"></i>'.repeat(review.rating)}
+                            ${'<i class="bi bi-star"></i>'.repeat(5 - review.rating)}
+                        </div>
+                        <p>${review.comment}</p>
+                    </div>
+                `;
+            });
+            
+            // Show modal
+            const modal = new bootstrap.Modal(document.getElementById('productDetailModal'));
+            modal.show();
+        }
+        
+        function addToCartFromModal() {
+            const productName = document.getElementById('productModalTitle').textContent;
+            const productId = Object.keys(products).find(id => products[id].name === productName);
+            
+            if (productId) {
+                addToCart(parseInt(productId));
+            }
+        }
+        
+        function buyNow() {
+            addToCartFromModal();
+            const modal = bootstrap.Modal.getInstance(document.getElementById('productDetailModal'));
+            modal.hide();
+            showSection('cart');
+        }
+        
+        // Checkout functions
+        function checkout() {
+            if (cart.length === 0) {
+                showToast('error', 'Keranjang belanja kosong');
+                return;
+            }
+            
+            showSection('checkout');
+        }
+        
+        function loadCheckoutPage() {
+            const checkoutProducts = document.getElementById('checkoutProducts');
+            const checkoutSubtotal = document.getElementById('checkoutSubtotal');
+            const checkoutShipping = document.getElementById('checkoutShipping');
+            const checkoutTotal = document.getElementById('checkoutTotal');
+            
+            if (cart.length === 0) {
+                checkoutProducts.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="text-center py-5">Tidak ada produk</td>
+                    </tr>
+                `;
+                checkoutSubtotal.textContent = formatCurrency(0);
+                checkoutShipping.textContent = formatCurrency(0);
+                checkoutTotal.textContent = formatCurrency(0);
+                return;
+            }
+            
+            let subtotal = 0;
+            let html = '';
+            
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                html += `
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="${item.image}" alt="${item.name}" width="60" class="rounded me-3">
+                                <div>
+                                    <h6 class="mb-0">${item.name}</h6>
+                                </div>
+                            </div>
+                        </td>
+                        <td>${formatCurrency(item.price)}</td>
+                        <td>${item.quantity}</td>
+                        <td>${formatCurrency(item.price * item.quantity)}</td>
+                    </tr>
+                `;
+            });
+            
+            const shipping = 15000;
+            const total = subtotal + shipping;
+            
+            checkoutProducts.innerHTML = html;
+            checkoutSubtotal.textContent = formatCurrency(subtotal);
+            checkoutShipping.textContent = formatCurrency(shipping);
+            checkoutTotal.textContent = formatCurrency(total);
+        }
+        
+        function placeOrder() {
+            if (cart.length === 0) {
+                showToast('error', 'Keranjang belanja kosong');
+                return;
+            }
+            
+            const orderId = 'ORD-' + Date.now();
+            const orderDate = new Date();
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = 15000;
+            const total = subtotal + shipping;
+            
+            const newOrder = {
+                id: orderId,
+                date: orderDate,
+                items: [...cart],
+                subtotal: subtotal,
+                shipping: shipping,
+                total: total,
+                status: 'pending',
+                shippingInfo: {
+                    name: document.getElementById('fullName').value,
+                    phone: document.getElementById('phoneNumber').value,
+                    address: document.getElementById('address').value,
+                    province: document.getElementById('province').value,
+                    city: document.getElementById('city').value,
+                    postalCode: document.getElementById('postalCode').value,
+                    shippingMethod: document.getElementById('shippingMethod').value
+                },
+                paymentInfo: {
+                    method: document.querySelector('#paymentMethodTab .nav-link.active').textContent,
+                    details: document.querySelector('#paymentMethodTabContent .tab-pane.active .alert').textContent
+                }
+            };
+            
+            orders.unshift(newOrder); // Add to beginning of array
+            localStorage.setItem('orders', JSON.stringify(orders));
+            
+            // Clear cart
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            loadCartDropdown();
+            
+            // Show success modal
+            const modal = new bootstrap.Modal(document.getElementById('orderSuccessModal'));
+            modal.show();
+            
+            // Update orders UI
+            updateOrdersCount();
+            loadOrdersDropdown();
+        }
+        
+        // Utility functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+        }
+        
+        function formatDate(date) {
+            if (!(date instanceof Date)) {
+                date = new Date(date);
+            }
+            return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+        
+        function showToast(type, message) {
+            const toastElement = type === 'success' ? document.getElementById('successToast') : document.getElementById('errorToast');
+            const toast = new bootstrap.Toast(toastElement);
+            
+            document.querySelector(`#${type}Toast .toast-body`).textContent = message;
+            toast.show();
+        }
+        
+        // Initialize bank account info
+        document.getElementById('bankSelect')?.addEventListener('change', function() {
+            const bankAccounts = {
+                'bca': { name: 'John Doe', number: '1234567890' },
+                'bni': { name: 'John Doe', number: '9876543210' },
+                'bri': { name: 'John Doe', number: '5678901234' },
+                'mandiri': { name: 'John Doe', number: '4321098765' },
+                'seabank': { name: 'John Doe', number: '1357924680' }
+            };
+            
+            const selectedBank = this.value;
+            const accountInfo = bankAccounts[selectedBank];
+            document.getElementById('bankAccountInfo').innerHTML = `Nama: ${accountInfo.name}<br>Nomor Rekening: ${accountInfo.number}`;
+        });
+
+        <!-- Tambahkan di head -->
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyALQjNGLFeFPWrRA4PKe1Hw-6Qqo5x5NSc",
+  authDomain: "xdorrwar.firebaseapp.com",
+  projectId: "xdorrwar",
+  storageBucket: "xdorrwar.appspot.com",
+  messagingSenderId: "980171926257",
+  appId: "1:980171926257:web:eac0b192b3b01f57d89750",
+  measurementId: "G-4QVK2228T2"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
+
+// Fungsi untuk login dengan email/password
+function loginWithEmail(email, password) {
+  return auth.signInWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      return userCredential.user;
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
+
+// Fungsi untuk registrasi dengan email/password
+function registerWithEmail(name, email, password) {
+  return auth.createUserWithEmailAndPassword(email, password)
+    .then((userCredential) => {
+      return userCredential.user.updateProfile({
+        displayName: name
+      });
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
+
+// Fungsi untuk login dengan Google
+function loginWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  return auth.signInWithPopup(provider)
+    .then((result) => {
+      return result.user;
+    })
+    .catch((error) => {
+      throw error;
+    });
+}
+
+// Fungsi untuk mendapatkan pesan error yang ramah pengguna
+function getAuthErrorMessage(error) {
+  switch (error.code) {
+    case 'auth/email-already-in-use':
+      return 'Email sudah terdaftar';
+    case 'auth/invalid-email':
+      return 'Email tidak valid';
+    case 'auth/weak-password':
+      return 'Password terlalu lemah (minimal 6 karakter)';
+    case 'auth/user-not-found':
+      return 'Email tidak terdaftar';
+    case 'auth/wrong-password':
+      return 'Password salah';
+    case 'auth/popup-closed-by-user':
+      return 'Popup login ditutup';
+    default:
+      return 'Terjadi kesalahan: ' + error.message;
+  }
+}
+
+// Fungsi untuk update UI berdasarkan status auth
+function updateAuthUI() {
+  const user = auth.currentUser;
+  const authSection = document.getElementById('authSection');
+  const accountSection = document.getElementById('accountSection');
+  
+  if (user) {
+    // User sudah login
+    authSection.classList.add('d-none');
+    accountSection.classList.remove('d-none');
+    
+    // Update info pengguna
+    document.getElementById('accountName').textContent = user.displayName || 'Pengguna';
+    document.getElementById('accountEmail').textContent = user.email;
+    document.getElementById('firstName').value = user.displayName?.split(' ')[0] || '';
+    document.getElementById('lastName').value = user.displayName?.split(' ')[1] || '';
+    document.getElementById('email').value = user.email || '';
+    
+    // Update foto profil jika ada
+    const profileImage = document.querySelector('#accountSection img');
+    if (user.photoURL) {
+      profileImage.src = user.photoURL;
+    } else {
+      profileImage.src = "https://via.placeholder.com/150";
+    }
+  } else {
+    // User belum login
+    authSection.classList.remove('d-none');
+    accountSection.classList.add('d-none');
+  }
+}
+
+// Fungsi untuk switch tab auth
+function switchAuthTab(tabId) {
+  const tabButton = document.getElementById(`${tabId}-tab`);
+  if (tabButton) {
+    const tab = new bootstrap.Tab(tabButton);
+    tab.show();
+  }
+}
+
+// Auth state listener
+auth.onAuthStateChanged((user) => {
+  updateAuthUI();
+  
+  // Sembunyikan loading spinner setelah auth state diperiksa
+  const loadingSpinner = document.querySelector('.loading-spinner');
+  if (loadingSpinner) {
+    loadingSpinner.style.display = 'none';
+  }
+});
+
+// Login form handler
+document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  
+  loginWithEmail(email, password)
+    .then(() => {
+      showToast('success', 'Login berhasil!');
+      updateAuthUI();
+    })
+    .catch((error) => {
+      showToast('error', getAuthErrorMessage(error));
+    });
+});
+
+// Register form handler
+document.getElementById('registerForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('registerName').value;
+  const email = document.getElementById('registerEmail').value;
+  const password = document.getElementById('registerPassword').value;
+  const confirmPassword = document.getElementById('registerConfirmPassword').value;
+  
+  if (password !== confirmPassword) {
+    showToast('error', 'Password tidak cocok!');
+    return;
+  }
+  
+  registerWithEmail(name, email, password)
+    .then(() => {
+      showToast('success', 'Registrasi berhasil!');
+      switchAuthTab('login');
+    })
+    .catch((error) => {
+      showToast('error', getAuthErrorMessage(error));
+    });
+});
+
+// Google login button
+document.getElementById('googleLoginBtn')?.addEventListener('click', function() {
+  loginWithGoogle()
+    .then(() => {
+      showToast('success', 'Login dengan Google berhasil!');
+      updateAuthUI();
+    })
+    .catch((error) => {
+      showToast('error', getAuthErrorMessage(error));
+    });
+});
+
+// Fungsi logout
+function logout() {
+  auth.signOut()
+    .then(() => {
+      showToast('success', 'Logout berhasil');
+      updateAuthUI();
+      showSection('dashboard');
+    })
+    .catch((error) => {
+      showToast('error', 'Gagal logout: ' + error.message);
+    });
+}
+
+// Fungsi untuk menyimpan data pengguna tambahan ke Firestore
+function saveUserAdditionalData(userId, data) {
+  return db.collection('users').doc(userId).set(data, { merge: true });
+}
+
+// Update form profile handler
+document.getElementById('profileForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const user = auth.currentUser;
+  if (!user) return;
+  
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const phone = document.getElementById('phone').value;
+  const birthDate = document.getElementById('birthDate').value;
+  const address = document.getElementById('address').value;
+  
+  // Update display name
+  const displayName = `${firstName} ${lastName}`.trim();
+  
+  user.updateProfile({
+    displayName: displayName
+  })
+  .then(() => {
+    // Simpan data tambahan ke Firestore
+    return saveUserAdditionalData(user.uid, {
+      phone: phone,
+      birthDate: birthDate,
+      address: address,
+      lastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  })
+  .then(() => {
+    showToast('success', 'Profil berhasil diperbarui');
+    updateAuthUI();
+  })
+  .catch((error) => {
+    showToast('error', 'Gagal memperbarui profil: ' + error.message);
+  });
+});
+
+// Photo form handler
+document.getElementById('photoForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const file = document.getElementById('photoUpload').files[0];
+  const user = auth.currentUser;
+  
+  if (!file || !user) return;
+  
+  // Upload file ke Firebase Storage
+  const storageRef = storage.ref(`profile_photos/${user.uid}`);
+  const uploadTask = storageRef.put(file);
+  
+  uploadTask.on('state_changed',
+    (snapshot) => {
+      // Progress
+      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      console.log('Upload progress: ' + progress + '%');
+    },
+    (error) => {
+      showToast('error', 'Gagal mengupload foto: ' + error.message);
+    },
+    () => {
+      // Upload selesai, dapatkan URL download
+      uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+        // Update foto profil pengguna
+        return user.updateProfile({
+          photoURL: downloadURL
+        });
+      })
+      .then(() => {
+        showToast('success', 'Foto profil berhasil diubah');
+        updateAuthUI();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('changePhotoModal'));
+        modal.hide();
+      })
+      .catch((error) => {
+        showToast('error', 'Gagal mengupdate foto profil: ' + error.message);
+      });
+    }
+  );
+});
+
+// Preview foto sebelum upload
+document.getElementById('photoUpload')?.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('photoPreview').src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// Hapus loading spinner setelah halaman selesai dimuat
+window.addEventListener('load', function() {
+  const loadingSpinner = document.querySelector('.loading-spinner');
+  if (loadingSpinner) {
+    loadingSpinner.style.display = 'none';
+  }
+});
+    </script>
+    
+        </body>
+    </html>
+<!-- End of HTML document -->
